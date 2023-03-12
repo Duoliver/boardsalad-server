@@ -1,0 +1,30 @@
+version: "3"
+services:
+  boardsalad:
+    container_name: boardsalad
+    build:
+      context: .
+      dockerfile: .Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@postgres:5432/boardsalad
+      NODE_ENV: development
+      PORT: 4000
+    ports:
+      - "4000:4000"
+  postgres:
+    container_name: boardsalad_postgres
+    image: postgres:10.4
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./src/migrations/dbinit.sql:/docker-entrypoint-initdb.d/dbinit.sql
+    restart: always
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: boardsalad
+volumes:
+  db-data:

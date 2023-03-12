@@ -1,0 +1,20 @@
+{
+  "name": "boardsalad-server",
+  "main": "dist/src/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && node dist/src/app.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.14.6",
+    "eslint": "^8.35.0",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.10.0",
+    "sequelize": "^6.29.3",
+    "sqlite3": "^5.1.4"
+  }
+}
