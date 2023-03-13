@@ -1,17 +1,19 @@
-import express, { Application, Router } from "express";
+import express, { Express } from "express";
 import bodyParser from "body-parser";
 import boardRouter from "./routers/BoardRouter";
 import sequelize from "./dbconfig/dbconnector";
+import { Post } from "./model/PostModel";
+import { Board } from "./model/BoardModel";
 
 class Server {
-  private app;
+  private app: Express;
 
   constructor() {
     this.app = express();
     this.config();
-    this.routerConfig();
     this.dbConnect();
     this.syncModels();
+    this.routerConfig();
   }
 
   private config() {
@@ -30,10 +32,11 @@ class Server {
 
   private async syncModels() {
     try {
-      await sequelize.sync();
+      await Board.sync();
+      await Post.sync();
       console.log("All models were synchronized successfully");
     } catch (error) {
-      console.error("An error occured whi");
+      console.error("An error occured while synchronizing");
     }
   }
 
