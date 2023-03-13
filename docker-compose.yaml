@@ -8,22 +8,22 @@ services:
     depends_on:
       - postgres
     environment:
-      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@postgres:5432/boardsalad
+      DATABASE_URL: postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@postgres:5432/${DATABASE_NAME}
       NODE_ENV: development
-      PORT: 4000
+      PORT: ${PORT}
     ports:
-      - "4000:4000"
+      - "${PORT}:${PORT}"
   postgres:
     container_name: boardsalad_postgres
     image: postgres:10.4
     ports:
-      - "5434:5432"
+      - "${DATABASE_PORT}:5432"
     volumes:
       - ./postgresdata:/var/lib/postgresql/data
     restart: always
     environment:
       POSTGRES_USER: ${DATABASE_USER}
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: boardsalad
+      POSTGRES_DB: ${DATABASE_NAME}
 volumes:
   db-data:
