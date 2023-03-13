@@ -1,14 +1,16 @@
-import { Board } from "../model/BoardModel";
+import { Request, Response } from "express";
+import BoardService from "../service/BoardService";
 
 class BoardController {
-  public async get(req, res) {
-    try {
-      const boards = await Board.findAll();
+  private boardService: BoardService;
 
-      res.send(boards);
-    } catch (error) {
-      res.status(400).send(error);
-    }
+  constructor() {
+    this.boardService = new BoardService();
+    this.get = this.get.bind(this);
+  }
+
+  public async get(req: Request, res: Response) {
+    this.boardService.getAllBoards(req, res);
   }
 }
 
