@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import BoardRepository from "../repository/BoardRepository";
+import BoardRepository from "../repositories/BoardRepository";
 
 class BoardService {
   private boardRepository: BoardRepository;

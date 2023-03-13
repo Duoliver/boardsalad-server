@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import BoardService from "../service/BoardService";
+import BoardService from "../services/BoardService";
 
 class BoardController {
   private boardService: BoardService;

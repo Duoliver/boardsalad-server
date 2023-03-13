@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from "../dbconfig/dbconnector";
+import sequelize from "../../dbconfig/dbconnector";
 import { Board } from "./BoardModel";
 
 class Post extends Model {}

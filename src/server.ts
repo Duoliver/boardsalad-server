@@ -2,8 +2,8 @@ import express, { Express } from "express";
 import bodyParser from "body-parser";
 import boardRouter from "./routers/BoardRouter";
 import sequelize from "./dbconfig/dbconnector";
-import { Post } from "./model/PostModel";
-import { Board } from "./model/BoardModel";
+import { Post } from "./api/models/PostModel";
+import { Board } from "./api/models/BoardModel";
 
 class Server {
   private app: Express;

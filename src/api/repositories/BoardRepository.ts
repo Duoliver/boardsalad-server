@@ -1,4 +1,4 @@
-import { Board } from "../model/BoardModel";
+import { Board } from "../models/BoardModel";
 
 class BoardRepository {
   public async getAllBoards(): Promise<Board[]> {
