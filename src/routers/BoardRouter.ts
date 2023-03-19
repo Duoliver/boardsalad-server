@@ -5,5 +5,6 @@ const router = Router();
 const boardController = new BoardController();
 
 router.get("/", boardController.get);
+router.post("/", boardController.create);
 
 export default router;
