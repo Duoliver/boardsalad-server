@@ -7,10 +7,15 @@ class BoardController {
   constructor() {
     this.boardService = new BoardService();
     this.get = this.get.bind(this);
+    this.create = this.create.bind(this);
   }
 
   public async get(req: Request, res: Response) {
     this.boardService.getAllBoards(req, res);
+  }
+
+  public async create(req: Request, res: Response) {
+    this.boardService.createBoard(req, res);
   }
 }
 
