@@ -10,12 +10,12 @@ class BoardController {
     this.create = this.create.bind(this);
   }
 
-  public async get(req: Request, res: Response) {
-    this.boardService.getAllBoards(req, res);
+  public async get(req: Request, res: Response): Promise<void> {
+    await this.boardService.getAllBoards(req, res);
   }
 
-  public async create(req: Request, res: Response) {
-    this.boardService.createBoard(req, res);
+  public async create(req: Request, res: Response): Promise<void> {
+    await this.boardService.createBoard(req, res);
   }
 }
 

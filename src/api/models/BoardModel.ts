@@ -1,7 +1,15 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../../dbconfig/dbconnector";
 
-class Board extends Model {}
+type BoardAttributes = {
+  id: string;
+  name: string;
+  description: string;
+};
+
+type BoardCreationAttributes = Optional<BoardAttributes, "id">;
+
+class Board extends Model<BoardAttributes, BoardCreationAttributes> {}
 
 Board.init(
   {
@@ -16,11 +24,6 @@ Board.init(
     },
     description: {
       type: DataTypes.STRING,
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-      allowNull: false,
     },
   },
   {
